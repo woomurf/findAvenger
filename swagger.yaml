@@ -3,7 +3,7 @@ openapi: 3.0.1
 info:
   title: Find Avenger
   description: |
-    You can fine your avenger using your picture.
+    You can find your avenger using your picture.
     ---
   contact:
     name: Ainizer

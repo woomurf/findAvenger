@@ -40,7 +40,6 @@ exports.predict = async function (image, model) {
   const result = {};
   for (let i = 0; i < predictions.length; i++) {
     result[predictions[i].className] = Number(predictions[i].probability.toFixed(2));
-    // console.log(predictions[i].className, predictions[i].probability.toFixed(2));
   }
   
   return result;
