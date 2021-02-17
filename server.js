@@ -3,7 +3,7 @@ const { predict, loadModel } = require('./image');
 const multer = require('multer');
 const upload = multer({dest: 'upload/'});
 const app = express();
-const { removeImage } = require('./utils');
+const { removeImage, rankPrediction } = require('./utils');
 
 let model;
 
@@ -13,7 +13,7 @@ app.post('/predict', upload.single('image'), (req, res) => {
   let result;
   predict('./'+image.path, model)
   .then(prediction => {
-    result = prediction;
+    result = rankPrediction(prediction);
     console.log('SUCCESS');
     removeImage(image.filename);
     res.send(result);
