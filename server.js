@@ -5,7 +5,6 @@ const upload = multer({dest: 'upload/'});
 const app = express();
 const { removeImage } = require('./utils');
 
-
 let model;
 
 app.post('/predict', upload.single('image'), (req, res) => {
@@ -26,6 +25,10 @@ app.post('/predict', upload.single('image'), (req, res) => {
     removeImage(image.filename);
     res.send(result);
   })
+})
+
+app.get('/healthz', (req, res) => {
+  res.send("OK");
 })
 
 app.listen(80, async () => {

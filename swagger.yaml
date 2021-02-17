@@ -1,0 +1,35 @@
+openapi: 3.0.1
+
+info:
+  title: Find Avenger
+  description: |
+    You can fine your avenger using your picture.
+    ---
+  contact:
+    name: Ainizer
+  version: "0.1"
+
+servers:
+  - url: https://master-find-avenger-woomurf.endpoint.ainize.ai
+
+paths:
+  /predict:
+    post:
+      requestBody:
+        required: true
+        description: 'upload your picture and get your avenger!'
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: 'success'
+          content:
+            application/json:
+              schema:
+                type: string
